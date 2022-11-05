@@ -8,6 +8,26 @@ app.use(cors());
 app.use(express.json());
 
 //code
+const tweets = [
+  {
+    username: "bob",
+    avatar: "",
+    tweet: "",
+  },
+];
+const users = [
+  {
+    username: "",
+    avatar: "",
+  },
+];
+
+app.get("/sign-up", (req, res) => {
+  const { username, avatar } = req.body;
+  if (!username || !avatar) {
+    res.sendStatus(404);
+  }
+});
 
 //port
-app.listen(5000, () => console.log("Server running in port 5000"));
+app.listen(5000);
