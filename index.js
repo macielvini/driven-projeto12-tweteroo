@@ -130,8 +130,9 @@ const users = [
 
 app.post("/sign-up", (req, res) => {
   const { username, avatar } = req.body;
+
   if (!username || !avatar) {
-    res.status(400).send("Empty fields");
+    res.status(400).send("Todos os campos são obrigatórios");
     return;
   }
 
@@ -141,19 +142,19 @@ app.post("/sign-up", (req, res) => {
   }
 
   users.push({ ...req.body });
-  res.send("OK");
+  res.status(201).send("OK");
 });
 
 app.post("/tweets", (req, res) => {
   const { username, tweet } = req.body;
 
   if (!username || !tweet) {
-    res.status(400).send("Empty fields");
+    res.status(400).send("Todos os campos são obrigatórios");
     return;
   }
 
   tweets.push({ ...req.body });
-  res.send("OK");
+  res.status(201).send("OK");
 });
 
 app.get("/tweets", (req, res) => {
