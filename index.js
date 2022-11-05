@@ -22,11 +22,14 @@ const users = [
   },
 ];
 
-app.get("/sign-up", (req, res) => {
+app.post("/sign-up", (req, res) => {
   const { username, avatar } = req.body;
   if (!username || !avatar) {
     res.sendStatus(404);
   }
+
+  users.push({ ...req.body });
+  res.send(users);
 });
 
 //port
