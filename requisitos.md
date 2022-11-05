@@ -17,6 +17,7 @@
     ```
 
 - **POST** `/sign-up`
+
   - [x] Deve receber (pelo body da request), um parâmetro **username** e um **avatar**, contendo o nomeo do username d usuário e a sua foto de avatar:
     ```jsx
     {
@@ -25,15 +26,18 @@
     }
     ```
   - [x] Salvar esse usuário num array de usuários do servidor
-  - [ ] Por fim, retornar a mensagem `“OK”`
+  - [x] Por fim, retornar a mensagem `“OK”`
+
 - **POST** `/tweets`
-  - [ ] Deve receber (pelo body da request), os parâmetros `username` e `tweet`:
+
+  - [x] Deve receber (pelo body da request), os parâmetros `username` e `tweet`:
     ```jsx
     {
     	username: "bobesponja",
       tweet: "eu amo o hub"
     }
     ```
-  - [ ] Salvar esse tweet num array de tweets do servidor
-  - [ ] Por fim, retornar a mensagem `“OK”`
+  - [x] Salvar esse tweet num array de tweets do servidor
+  - [x] Por fim, retornar a mensagem `“OK”`
+
 - **GET** `/tweets`

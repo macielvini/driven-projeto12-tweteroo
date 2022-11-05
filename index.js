@@ -17,8 +17,8 @@ const tweets = [
 ];
 const users = [
   {
-    username: "",
-    avatar: "",
+    username: "vini",
+    avatar: "http:vini.jpg",
   },
 ];
 
@@ -35,6 +35,18 @@ app.post("/sign-up", (req, res) => {
   }
 
   users.push({ ...req.body });
+  res.send("OK");
+});
+
+app.post("/tweets", (req, res) => {
+  const { username, tweet } = req.body;
+
+  if (!username || !tweet) {
+    res.status(400).send("Empty fields");
+    return;
+  }
+
+  tweets.push({ ...req.body });
   res.send("OK");
 });
 
