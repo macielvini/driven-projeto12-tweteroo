@@ -25,11 +25,17 @@ const users = [
 app.post("/sign-up", (req, res) => {
   const { username, avatar } = req.body;
   if (!username || !avatar) {
-    res.sendStatus(404);
+    res.status(400).send("Empty fields");
+    return;
+  }
+
+  if (users.find((u) => u.username === username)) {
+    res.status(409).send("Username already exit!");
+    return;
   }
 
   users.push({ ...req.body });
-  res.send(users);
+  res.send("OK");
 });
 
 //port
