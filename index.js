@@ -11,14 +11,120 @@ app.use(express.json());
 const tweets = [
   {
     username: "bob",
-    avatar: "",
-    tweet: "",
+    tweet: "oi",
+  },
+  {
+    username: "jane",
+    tweet: "jane",
+  },
+  {
+    username: "rick",
+    tweet: "rick",
+  },
+  {
+    username: "morty",
+    tweet: "morty",
+  },
+  {
+    username: "sam",
+    tweet: "sam",
+  },
+  {
+    username: "walter",
+    tweet: "walter",
+  },
+  {
+    username: "saul",
+    tweet: "saul",
+  },
+  {
+    username: "naruto",
+    tweet: "naruto",
+  },
+  {
+    username: "sasuke",
+    tweet: "sasuke",
+  },
+  {
+    username: "morty",
+    tweet: "morty",
+  },
+  {
+    username: "luffy",
+    tweet: "luffy",
+  },
+
+  {
+    username: "zoro",
+    tweet: "zoro",
+  },
+  {
+    username: "sanji",
+    tweet: "sanji",
+  },
+  {
+    username: "uta",
+    tweet: "uta",
   },
 ];
+
 const users = [
   {
-    username: "vini",
-    avatar: "http:vini.jpg",
+    username: "bob",
+    avatar: "http:bob.jpeg",
+  },
+  {
+    username: "jane",
+    avatar: "http:jane.jpeg",
+  },
+  {
+    username: "rick",
+    avatar: "http:rick.jpeg",
+  },
+  {
+    username: "morty",
+    avatar: "http:morty.jpeg",
+  },
+  {
+    username: "sam",
+    avatar: "http:sam.jpeg",
+  },
+  {
+    username: "walter",
+    avatar: "http:walter.jpeg",
+  },
+  {
+    username: "saul",
+    avatar: "http:saul.jpeg",
+  },
+  {
+    username: "naruto",
+    avatar: "http:naruto.jpeg",
+  },
+  {
+    username: "sasuke",
+    avatar: "http:sasuke.jpeg",
+  },
+  {
+    username: "morty",
+    avatar: "http:morty.jpeg",
+  },
+  {
+    username: "luffy",
+    avatar: "http:luffy.jpeg",
+  },
+
+  {
+    username: "zoro",
+    avatar: "http:zoro.jpeg",
+  },
+  {
+    username: "sanji",
+    avatar: "http:sanji.jpeg",
+  },
+  {
+    username: "uta",
+    avatar: "http:uta.jpeg",
   },
 ];
 
@@ -48,6 +154,18 @@ app.post("/tweets", (req, res) => {
 
   tweets.push({ ...req.body });
   res.send("OK");
+});
+
+app.get("/tweets", (req, res) => {
+  const lastTweets = tweets.map((tweet) => {
+    return {
+      username: tweet.username,
+      avatar: users.find((u) => tweet.username === u.username).avatar,
+      tweet: tweet.tweet,
+    };
+  });
+
+  res.send(lastTweets.splice(-10, lastTweets.length - 1));
 });
 
 //port
