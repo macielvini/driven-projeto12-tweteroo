@@ -14,6 +14,14 @@ const tweets = [
     tweet: "oi",
   },
   {
+    username: "bob",
+    tweet: "ola",
+  },
+  {
+    username: "bob",
+    tweet: "hi",
+  },
+  {
     username: "jane",
     tweet: "jane",
   },
@@ -167,6 +175,23 @@ app.get("/tweets", (req, res) => {
   });
 
   res.send(lastTweets.splice(-10, lastTweets.length - 1));
+});
+
+app.get("/tweets/:USERNAME", (req, res) => {
+  const username = req.params.USERNAME;
+  const avatar = users.find((u) => u.username === username).avatar;
+
+  const userTweets = tweets.filter((tweet) => {
+    if (tweet.username === username) {
+      return {
+        username: username,
+        avatar: avatar,
+        tweet: tweet.tweet,
+      };
+    }
+  });
+
+  res.send(userTweets);
 });
 
 //port
